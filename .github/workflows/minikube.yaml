@@ -1,0 +1,13 @@
+name: "Create cluster using minikube"
+on:
+    - pull_request
+jobs:
+  minikube:
+    runs-on: ubuntu-latest
+    name: set up minikube
+    steps:
+    - uses: actions/checkout@v2
+    - name: Start minikube
+      uses: medyagh/setup-minikube@master
+    - name: Try the cluster !
+      run: kubectl get pods -A
